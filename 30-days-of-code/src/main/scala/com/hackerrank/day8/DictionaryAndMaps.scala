@@ -21,7 +21,7 @@ object DictionaryAndMaps {
             case None => "Not found"
           }
           println(result)
-        case None => _
+        case None => 
       }
     })
   }
