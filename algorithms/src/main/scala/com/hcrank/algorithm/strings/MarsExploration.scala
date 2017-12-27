@@ -1,4 +1,4 @@
-package com.hcrank.algorithm
+package com.hcrank.algorithm.strings
 
 /**
   * Created by ronnie on 2017. 11. 26.
