@@ -29,9 +29,17 @@ object MissingNumbers {
   }
 
   def missingNumbers(mapA: mutable.HashMap[Int, Int], mapB: mutable.HashMap[Int, Int]): List[Int] = {
-    val sorted = mapB.filter(b => (b._2 - mapA.getOrElse(b._1, 0)) > 0).keys.toList.sorted
+    val sorted = mapB
+      .filter(b => (b._2 - mapA.getOrElse(b._1, 0)) > 0)
+      .keys
+      .toList
+      .sorted
+    println(sorted)
     if (sorted.last - sorted.head >= 100) {
-      if (sorted.tail.head - sorted.head >=100) sorted.tail else sorted.dropRight(1)
+      if (sorted.tail.head - sorted.head >=100)
+        sorted.tail  
+      else 
+        sorted.dropRight(1)
     } else {
       sorted
     } 

@@ -32,7 +32,7 @@ object SherlockAndArray {
       //println(rightMap)
 
       // 같은 인덱스의 sum 값이 같은게 있으면 YES 없으면 NO
-      if (A.indices.exists(i => leftMap.getOrElse(i, -1) == rightMap.getOrElse(i, -2))) println("YES")
+      if (A.indices.exists(i => leftMap.get(i) == rightMap.get(i))) println("YES")
       else println("NO")
     }
   }
