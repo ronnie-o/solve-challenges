@@ -10,23 +10,22 @@ object SherlockAndTheBeast {
     val t = sc.nextInt
     (0 until t).foreach { _ =>
       val n = sc.nextInt
-      val res = decentNumber(n)
+      val res = decentNumber(n, 0)
       println(res)
     }
   }
 
-  // timed out TT
-  def decentNumber(num: Int): String = {
-    val fives: List[Int] = Stream.from(0, 3).take(num / 3 + 1).toList // 0, 3, 6, 9
-    val threes: List[Int] = Stream.from(0, 5).take(num / 5 + 1).toList // 0, 5, 10
-
-    val list: List[Int] = threes.filter(t => fives.exists(f => t + f == num))
-    if (list.isEmpty) "-1"
-    else mkString(num - list.min, list.min)
+  def decentNumber(num: Int, i: Int): String = {
+    println(s"num=$num,i=$i")
+    if (num < 0) "-1"
+    else if (num % 3 == 0) mkString(num, 5 * i)
+    else if (num == 0) mkString(0, 5 * i)
+    else decentNumber(num - 5, i + 1)
+    
   }
 
   def mkString(cnt5: Int, cnt3: Int): String = {
-    val str5 = (0 until cnt5).foldLeft("")((s, _) => s + "5")
-    (0 until cnt3).foldLeft(str5)((s, _) => s + "3")
+    if (cnt5 == 0 && cnt3 == 0) "-1"
+    else "5" * cnt5 + "3" * cnt3
   }
 }
